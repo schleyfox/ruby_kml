@@ -9,7 +9,7 @@ require File.join(File.dirname(__FILE__), 'lib/kml', 'version')
 
 PKG_BUILD       = ENV['PKG_BUILD'] ? '.' + ENV['PKG_BUILD'] : ''
 PKG_NAME        = 'kmlr'
-PKG_VERSION     = ETL::VERSION::STRING + PKG_BUILD
+PKG_VERSION     = KML::VERSION::STRING + PKG_BUILD
 PKG_FILE_NAME   = "#{PKG_NAME}-#{PKG_VERSION}"
 PKG_DESTINATION = ENV["PKG_DESTINATION"] || "../#{PKG_NAME}"
 
