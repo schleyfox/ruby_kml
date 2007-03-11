@@ -26,7 +26,6 @@ Rake::TestTask.new(:test) do |t|
   t.libs << 'lib'
   t.pattern = 'test/**/*_test.rb'
   t.verbose = true
-  # TODO: reset the database
 end
 
 desc 'Generate documentation for the library.'
