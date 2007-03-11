@@ -33,9 +33,11 @@ module KML #:nodoc:
         xm.outerBoundaryIs {
           outer_boundary_is.render(xm)
         }
-        xm.innerBoundaryIs {
-          inner_boundary_is.render(xm)
-        }
+        unless inner_boundary_is.nil?
+          xm.innerBoundaryIs {
+            inner_boundary_is.render(xm)
+          }
+        end
       }
     end
   end
