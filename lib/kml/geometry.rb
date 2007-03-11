@@ -52,7 +52,11 @@ module KML
     #   beneath is also 10 meters above sea level. If the terrain is 3 meters above sea level, the placemark will 
     #   appear elevated above the terrain by 7 meters. A typical use of this mode is for aircraft placement.
     def altitude_mode
-      @altitude_mode ||= 'clampToGround'
+      @altitude_mode || 'clampToGround'
+    end
+    
+    def altitude_mode_set?
+      !(@altitude_mode.nil?)
     end
     
     # Set the altitude mode
@@ -68,7 +72,7 @@ module KML
     def render(xm=Builder::XmlMarkup.new(:indent => 2))
       xm.extrude(extrude) unless extrude.nil?
       xm.tessellate(tessellate) unless tessellate.nil?
-      xm.altitudeMode(altitude_mode) unless altitude_mode.nil?
+      xm.altitudeMode(altitude_mode) if altitude_mode_set?
     end
     
   end
