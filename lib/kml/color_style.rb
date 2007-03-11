@@ -31,3 +31,4 @@ end
 
 require 'kml/line_style'
 require 'kml/poly_style'
+require 'kml/icon_style'

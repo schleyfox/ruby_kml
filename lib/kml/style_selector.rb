@@ -4,3 +4,4 @@ module KML
 end
 
 require 'kml/style'
+require 'kml/style_map'

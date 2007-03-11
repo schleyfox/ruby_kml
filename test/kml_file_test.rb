@@ -172,4 +172,48 @@ DESC
     
     write_and_show(kml, File.dirname(__FILE__) + '/polygon_style.kml')
   end
+  
+  def test_style_map
+    kml = KMLFile.new
+    kml.objects << Document.new(
+      :name => 'Highlighted Icon',
+      :description => 'Place your mouse over the icon to see it display the new icon',
+      :styles => [
+        Style.new(
+          :id => "highlightPlacemark",
+          :icon_style => IconStyle.new(
+            :icon => Icon.new(
+              :href => "http://maps.google.com/mapfiles/kml/paddle/red-stars.png"
+            )
+          )
+        ),
+        Style.new(
+          :id => "normalPlacemark",
+          :icon_style => IconStyle.new(
+            :icon => Icon.new(
+              :href => "http://maps.google.com/mapfiles/kml/paddle/wht-blank.png"
+            )
+          )
+        ),
+        StyleMap.new(
+          :id => 'exampleStyleMap',
+          :pairs => {
+            'normal' => '#normalPlacemark',
+            'highlight' => '#highlightPlacemark'
+          }
+        )
+      ],
+      :features => [
+        Placemark.new(
+          :name => 'Roll over this icon',
+          :style_url => '#exampleStyleMap',
+          :geometry => Point.new(
+            :coordinates => '-122.0856545755255,37.42243077405461,0'
+          )
+        )
+      ]
+    )
+    #puts kml.render
+    write_and_show(kml, File.dirname(__FILE__) + '/style_map.kml')
+  end
 end
