@@ -1,4 +1,5 @@
 require "#{File.dirname(__FILE__)}/test_helper"
+
 class KMLFileTest < Test::Unit::TestCase
   include KML
   

@@ -2,21 +2,21 @@
 #
 # Basic XML chunk structure:
 #
-# <name>...</name>                      <!-- string -->
-# <visibility>1</visibility>            <!-- boolean -->
-# <open>1</open>                        <!-- boolean -->
-# <address>...</address>                <!-- string -->
-# <AddressDetails xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0">...
-#     </AddressDetails>                 <!-- string -->
-# <phoneNumber>...</phoneNumber>        <!-- string -->
-# <Snippet maxLines="2">...</Snippet>   <!-- string -->
-# <description>...</description>        <!-- string -->
-# <LookAt>...</LookAt>
-# <TimePrimitive>...</TimePrimitive>
-# <styleUrl>...</styleUrl>              <!-- anyURI -->
-# <StyleSelector>...</StyleSelector>
-# <Region>...</Region>
-# <Metadata>...</Metadata>              <!-- user-defined data -->
+#   <name>...</name>                      <!-- string -->
+#   <visibility>1</visibility>            <!-- boolean -->
+#   <open>1</open>                        <!-- boolean -->
+#   <address>...</address>                <!-- string -->
+#   <AddressDetails xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0">...
+#       </AddressDetails>                 <!-- string -->
+#   <phoneNumber>...</phoneNumber>        <!-- string -->
+#   <Snippet maxLines="2">...</Snippet>   <!-- string -->
+#   <description>...</description>        <!-- string -->
+#   <LookAt>...</LookAt>
+#   <TimePrimitive>...</TimePrimitive>
+#   <styleUrl>...</styleUrl>              <!-- anyURI -->
+#   <StyleSelector>...</StyleSelector>
+#   <Region>...</Region>
+#   <Metadata>...</Metadata>              <!-- user-defined data -->
 
 module KML #:nodoc:
   # A feature is an abstract base class.

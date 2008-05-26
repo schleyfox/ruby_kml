@@ -15,8 +15,9 @@ class Test::Unit::TestCase
   end
 
   def show_file(file)
-    cmd = "open -a /Applications/Google\\ Earth.app/ #{File.expand_path(file)}"
+    #tests should probably not launch visual external applications
+    #cmd = "open -a /Applications/Google\\ Earth.app/ #{File.expand_path(file)}"
     #puts "executing command: #{cmd}"
-    `#{cmd}`
+    #`#{cmd}`
   end
 end
