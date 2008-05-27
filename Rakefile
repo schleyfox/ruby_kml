@@ -28,6 +28,14 @@ Rake::TestTask.new(:test) do |t|
   t.verbose = true
 end
 
+desc 'Clean up after tests.'
+task :clean_tests do
+  FileList['test/*.kml'].each do |f|
+    File.unlink(f)
+    puts "Deleting #{f}"
+  end
+end
+
 desc 'Generate documentation for the library.'
 Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'

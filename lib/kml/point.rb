@@ -12,8 +12,8 @@ module KML
     # A single tuple consisting of floating point values for longitude, latitude, and altitude (in that order). 
     # Longitude and latitude values are in degrees, where:
     #
-    # * longitude ≥ -180 and <= 180
-    # * latitude ≥ -90 and ≤ 90
+    # * longitude >= -180 and <= 180
+    # * latitude >= -90 and <= 90
     # * altitude values (optional) are in meters above sea level
     def coordinates
       @coordinates
@@ -29,8 +29,10 @@ module KML
         end
       when Array
         @coordinates = c
+      when Hash
+        @coordinates = [c[:lat], c[:lon], c[:alt]].compact
       else
-        raise ArgumentError, "Coordinates must be either a String or an Array"
+        raise ArgumentError, "Coordinates must be a String, a Hash, or an Array"
       end
     end
     
