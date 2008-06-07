@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.1">
+  <Folder>
+    <name>Melbourne Stations</name>
+    <Placemark>
+      <name>Flinders St</name>
+      <Point>
+        <coordinates>144.966811,-37.818078</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Southern Cross</name>
+      <Point>
+        <coordinates>144.952417,-37.818358</coordinates>
+      </Point>
+    </Placemark>
+  </Folder>
+</kml>

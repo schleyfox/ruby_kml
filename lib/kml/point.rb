@@ -30,9 +30,9 @@ module KML
       when Array
         @coordinates = c
       when Hash
-        @coordinates = [c[:lat], c[:lon], c[:alt]].compact
+        @coordinates = [:lng, :lat, :alt].collect {|attr| c[attr]}.compact
       else
-        raise ArgumentError, "Coordinates must be a String, a Hash, or an Array"
+        raise ArgumentError, "Coordinates must be either a String, Hash or an Array"
       end
     end
     
