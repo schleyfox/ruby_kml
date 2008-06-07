@@ -7,6 +7,8 @@ See @test/kml_file_test.rb@ for more examples
 
 h3. Placing markers on a map
 
+"View on Google Maps":http://maps.google.com/maps?q=http://github.com/xaviershay/ruby_kml/tree/master%2Fexamples%2Fmelbourne-stations.kml?raw=true&t=k
+
 <pre><code>$LOAD_PATH.unshift('path/to/ruby_kml/lib') # Needed until this gets gemmified
 require 'kml'
 
