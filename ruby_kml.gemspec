@@ -3,7 +3,7 @@ Gem::Specification.new do |s|
   s.version = "0.1"
   s.date = "2008-06-07"
   s.summary = "Generate KML files with ruby"
-  s.email = ""
+  s.email  = ""
   s.homepage = "http://github.com/schleyfox/ruby_kml"
   s.description = "Generate KML files with ruby"
   s.has_rdoc = false
