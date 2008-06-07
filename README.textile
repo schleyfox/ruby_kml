@@ -3,9 +3,11 @@ Sweet if you want to place markers, overlays, and other awesome things over a go
 
 h2. Examples
 
+See @test/kml_file_test.rb@ for more examples
+
 h3. Placing markers on a map
 
-<pre><code>
+<pre><code>$LOAD_PATH.unshift('path/to/ruby_kml/lib') # Needed until this gets gemmified
 require 'kml'
 
 kml = KMLFile.new
@@ -16,7 +18,7 @@ folder = KML::Folder.new(:name => 'Melbourne Stations')
 ].each do |name, lat, lng|
   folder.features << KML::Placemark.new(
     :name => name, 
-    :geometry => KML::Point.new(:coordinates => [lng, lat])
+    :geometry => KML::Point.new(:coordinates => {:lat => lat, :lng => lng})
   )
 end
 kml.objects << folder
