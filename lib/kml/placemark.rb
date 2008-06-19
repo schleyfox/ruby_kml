@@ -23,12 +23,13 @@
 #   </Placemark>
 
 module KML
-  class Placemark < Feature
+  class Placemark < Container
     attr_accessor :geometry
     
     def render(xm=Builder::XmlMarkup.new(:indent => 2))
       xm.Placemark {
         super
+        features.each { |f| f.render(xm) }
         geometry.render(xm) unless geometry.nil?
       }
     end

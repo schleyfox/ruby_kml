@@ -154,8 +154,8 @@ module KML #:nodoc:
   end
 end
 
-require 'kml/placemark'
 require 'kml/container'
+require 'kml/placemark'
 require 'kml/overlay'
 
 require 'kml/snippet'
