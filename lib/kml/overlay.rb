@@ -18,3 +18,4 @@ module KML
 end
 
 require 'kml/ground_overlay'
+require 'kml/screen_overlay'
