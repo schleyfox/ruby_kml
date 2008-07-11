@@ -1,5 +1,5 @@
 module KML
-  class Geometry < KML::Object
+  class Geometry < KML::Container 
     # Specifies whether to connect the point to the ground. Extrusion requires that the point's +altitude_mode+ be 
     # either "relativeToGround" or "absolute" and that within the +coordinates+, the altitude component be greater 
     # than 0 (that is, in the air). Default is false.
