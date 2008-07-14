@@ -3,7 +3,7 @@ Sweet if you want to place markers, overlays, and other awesome things over a go
 
 h2. Install
 
-<pre><code>gem install xaviershay-ruby_kml --source http://gems.github.com</code></pre>
+<pre><code>gem install schleyfox-ruby_kml --source http://gems.github.com</code></pre>
 
 h2. Examples
 
