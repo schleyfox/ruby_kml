@@ -9,5 +9,4 @@ Gem::Specification.new do |s|
   s.has_rdoc = false
   s.authors = ["aeden, schleyfox, xaviershay"]
   s.files = ["CHANGELOG", "LICENSE", "Rakefile", "README.textile"] + %w(lib test).collect {|x| Dir["#{x}/**/*.rb"]}.flatten + Dir["examples/*.kml"]
-  s.test_files = Dir.glob("test/**/*.rb")
 end
