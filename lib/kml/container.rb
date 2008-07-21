@@ -4,11 +4,17 @@ module KML
     
     # Access the features in the container
     attr_accessor :features
+    attr_accessor :plain_children
     
     # Get the features in the container
     def features
       @features ||= []
     end
+
+    def plain_children
+      @plain_children ||= []
+    end
+
   end
 end
 
