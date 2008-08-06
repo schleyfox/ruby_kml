@@ -1,27 +1,18 @@
 require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'
-require 'rake/packagetask'
-require 'rake/gempackagetask'
-require 'rake/contrib/rubyforgepublisher'
+require 'erb'
 
 require File.join(File.dirname(__FILE__), 'lib/kml', 'version')
 
-PKG_BUILD       = ENV['PKG_BUILD'] ? '.' + ENV['PKG_BUILD'] : ''
-PKG_NAME        = 'kmlr'
-PKG_VERSION     = KML::VERSION::STRING + PKG_BUILD
-PKG_FILE_NAME   = "#{PKG_NAME}-#{PKG_VERSION}"
-PKG_DESTINATION = ENV["PKG_DESTINATION"] || "../#{PKG_NAME}"
+desc "Generate GemSpec file"
+task :gem_spec do 
+  t = ERB.new(File.read("ruby_kml.gemspec.erb"))
+  File.open("ruby_kml.gemspec", "w") do |f| 
+    f.write(t.result(binding))
+  end
+end
 
-RELEASE_NAME  = "REL #{PKG_VERSION}"
-
-RUBY_FORGE_PROJECT = "kmlr"
-RUBY_FORGE_USER    = "aeden"
-
-desc 'Default: run unit tests.'
-task :default => :test
-
-desc 'Test the library.'
 Rake::TestTask.new(:test) do |t|
   t.libs << 'lib'
   t.pattern = 'test/**/*_test.rb'
@@ -43,44 +34,6 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.options << '--line-numbers' << '--inline-source'
   rdoc.rdoc_files.include('README')
   rdoc.rdoc_files.include('lib/**/*.rb')
-end
-
-PKG_FILES = FileList[
-  'CHANGELOG',
-  'README',
-  'TODO',
-  'Rakefile',
-  'bin/**/*',
-  'doc/**/*',
-  'lib/**/*',
-] - [ 'test' ]
-
-spec = Gem::Specification.new do |s|
-  s.name = 'kmlr'
-  s.version = PKG_VERSION
-  s.summary = "Library to product KML files."
-  s.description = <<-EOF
-    KMLr is a Ruby library which can be used to construct Keyhole Markup Language files.
-  EOF
-
-  s.add_dependency('rake',                '>= 0.7.1')
-
-  s.rdoc_options << '--exclude' << '.'
-  s.has_rdoc = false
-
-  s.files = PKG_FILES.to_a.delete_if {|f| f.include?('.svn')}
-  s.require_path = 'lib'
-
-  s.author = "Anthony Eden"
-  s.email = "anthonyeden@gmail.com"
-  s.homepage = "http://kmlr.rubyforge.org/"
-  s.rubyforge_project = "kmlr"
-end
-
-Rake::GemPackageTask.new(spec) do |pkg|
-  pkg.gem_spec = spec
-  pkg.need_tar = true
-  pkg.need_zip = true
 end
 
 desc "Generate code statistics"
@@ -106,29 +59,4 @@ task :lines do
   end
 
   puts "Total: Lines #{total_lines}, LOC #{total_codelines}"
-end
-
-desc "Publish the release files to RubyForge."
-task :release => [ :package ] do
-  `rubyforge login`
-
-  for ext in %w( gem tgz zip )
-    release_command = "rubyforge add_release kmlr #{PKG_NAME} 'REL #{PKG_VERSION}' pkg/#{PKG_NAME}-#{PKG_VERSION}.#{ext}"
-    puts release_command
-    system(release_command)
-  end
-end
-
-desc "Publish the API documentation"
-task :pdoc => [:rdoc] do 
-  Rake::SshDirPublisher.new("aeden@rubyforge.org", "/var/www/gforge-projects/kmlr/rdoc", "rdoc").upload
-end
-
-desc "Reinstall the gem from a local package copy"
-task :reinstall => [:package] do
-  windows = RUBY_PLATFORM =~ /mswin/
-  sudo = windows ? '' : 'sudo'
-  gem = windows ? 'gem.bat' : 'gem'
-  `#{sudo} #{gem} uninstall -x -i #{PKG_NAME}`
-  `#{sudo} #{gem} install pkg/#{PKG_NAME}-#{PKG_VERSION}`
 end
