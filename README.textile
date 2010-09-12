@@ -1,8 +1,14 @@
 h2. Divergence from schleyfox's branch
 
+<pre>
 A number of the classes were missing the <code>render</code> method, which prevented me from generating KML files with LookAt nodes. I've fixed what I needed, but can't speak for the functionality of all the other possible XML nodes.
 
-<hr>
+-kdonovan
+</pre>
+
+
+
+h2. Documentation
 
 Library for generating KML(Keyhole Markup Language) files in Ruby.
 Sweet if you want to place markers, overlays, and other awesome things over a google map or google earth.
