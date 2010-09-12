@@ -148,7 +148,7 @@ module KML #:nodoc:
       xm.Snippet(snippet.text, snippet.max_lines) unless snippet.nil?
       
       xm.LookAt { look_at.render(xm) } unless look_at.nil?
-      xm.TimePrimitive { time_primitive.render(xm) } unless look_at.nil?
+      xm.TimePrimitive { time_primitive.render(xm) } unless time_primitive.nil?
       xm.StyleSelector { style_selector.render(xm) } unless style_selector.nil?
     end
   end

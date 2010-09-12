@@ -17,5 +17,12 @@ module KML
     attr_accessor :tilt
     attr_accessor :heading
     attr_accessor :altitude_mode
+    
+    def render(xm=Builder::XmlMarkup.new(:indent => 2))
+      [:longitude, :latitude, :altitude, :range, :tilt, :heading, :altitude_mode].each do |a|
+        xm.__send__(a, self.__send__(a)) unless self.__send__(a).nil?
+      end
+    end
+    
   end
 end
