@@ -3,7 +3,7 @@
 #
 #   f = KMLFile.new
 #   f.objects << Placemark.new(
-#     :name => 'Simple placemark', 
+#     :name => 'Simple placemark',
 #     :description => 'Attached to the ground. Intelligently places itself at the height of the underlying terrain.',
 #     :geometry => Point.new(:coordinates=>'-122.0822035425683,37.42228990140251,0')
 #   )
@@ -16,13 +16,19 @@ class KMLFile
     @objects ||= []
   end
 
-  # Render the KML file.
+  # Render the KML file
   def render(xm=Builder::XmlMarkup.new(:indent => 2))
     xm.instruct!
     xm.kml(:xmlns => 'http://earth.google.com/kml/2.1'){
       objects.each { |o| o.render(xm) }
     }
   end
+
+  def save filename
+    File.open(filename, 'w') { |f| f.write render }
+    raise
+  end
+
 end
 
 require 'kml/object'
