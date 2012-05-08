@@ -26,7 +26,6 @@ class KMLFile
 
   def save filename
     File.open(filename, 'w') { |f| f.write render }
-    raise
   end
 
 end
