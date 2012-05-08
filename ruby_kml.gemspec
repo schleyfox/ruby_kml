@@ -3,10 +3,10 @@ Gem::Specification.new do |s|
   s.date      = "2012-05-07"
   s.name      = "ruby_kml"
   s.summary   = "Generate KML files with ruby"
-  s.email     = "github@ianvaughan.co.uk"
-  s.homepage  = "http://github.com/ianvaughan/ruby_kml"
+  s.email     = ""
+  s.homepage  = "http://github.com/schleyfox/ruby_kml"
   s.description = "Generate KML files with ruby"
-  s.has_rdoc = false
-  s.authors = ["aeden, schleyfox, xaviershay, andykram, Ian Vaughan"]
-  s.files = Dir['**/**']
+  s.has_rdoc  = false
+  s.authors   = ["aeden, schleyfox, xaviershay, andykram, IanVaughan"]
+  s.files     = Dir['**/**']
 end
