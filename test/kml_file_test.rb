@@ -10,7 +10,7 @@ class KMLFileTest < Test::Unit::TestCase
       :description => 'Attached to the ground. Intelligently places itself at the height of the underlying terrain.',
       :geometry => Point.new(:coordinates=>'-122.0822035425683,37.42228990140251,0')
     )
-    write_and_show(kml, File.dirname(__FILE__) + '/simple_placemark.kml')
+    assert_equal File.read('test/simple_placemark.kml'), kml.render
   end
 
   def test_cdata_description
@@ -33,7 +33,7 @@ DESC
       :geometry => Point.new(:coordinates=>'-122.0822035425683,37.4228,0')
     )
     kml.objects << document
-    write_and_show(kml, File.dirname(__FILE__) + '/cdata_and_snippet.kml')
+    assert_equal File.read('test/cdata_and_snippet.kml'), kml.render
   end
 
   def test_ground_overlays
@@ -55,7 +55,7 @@ DESC
       )
     )
     kml.objects << folder
-    write_and_show(kml, File.dirname(__FILE__) + '/ground_overlays.kml')
+    assert_equal File.read('test/ground_overlays.kml'), kml.render
   end
 
   def test_paths
@@ -96,8 +96,7 @@ DESC
         )
       ]
     )
-    #puts kml.render
-    write_and_show(kml, File.dirname(__FILE__) + '/paths.kml')
+    assert_equal File.read('test/paths.kml'), kml.render
   end
 
   def test_polygon
@@ -125,8 +124,7 @@ DESC
         )
       )
     )
-
-    write_and_show(kml, File.dirname(__FILE__) + '/polygon.kml')
+    assert_equal File.read('test/polygon.kml'), kml.render
   end
 
   def test_geometry_styles
@@ -170,7 +168,7 @@ DESC
       )
     )
 
-    write_and_show(kml, File.dirname(__FILE__) + '/polygon_style.kml')
+    assert_equal File.read('test/polygon_style.kml'), kml.render
   end
 
   def test_style_map
@@ -213,7 +211,6 @@ DESC
         )
       ]
     )
-    #puts kml.render
-    write_and_show(kml, File.dirname(__FILE__) + '/style_map.kml')
+    assert_equal File.read('test/style_map.kml'), kml.render
   end
 end
