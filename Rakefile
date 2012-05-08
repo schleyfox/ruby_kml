@@ -1,30 +1,18 @@
 require 'rake'
 require 'rake/testtask'
-require 'rake/rdoctask'
-require 'erb'
+require 'rdoc/task'
+require 'rubygems/package_task'
 
 require File.join(File.dirname(__FILE__), 'lib/kml', 'version')
 
-desc "Generate GemSpec file"
-task :gem_spec do 
-  t = ERB.new(File.read("ruby_kml.gemspec.erb"))
-  File.open("ruby_kml.gemspec", "w") do |f| 
-    f.write(t.result(binding))
-  end
-end
+# desc "Generate GemSpec file"
+spec = Gem::Specification.load('ruby_kml.gemspec')
+Gem::PackageTask.new(spec) {}
 
 Rake::TestTask.new(:test) do |t|
   t.libs << 'lib'
   t.pattern = 'test/**/*_test.rb'
   t.verbose = true
-end
-
-desc 'Clean up after tests.'
-task :clean_tests do
-  FileList['test/*.kml'].each do |f|
-    File.unlink(f)
-    puts "Deleting #{f}"
-  end
 end
 
 desc 'Generate documentation for the library.'
@@ -51,10 +39,10 @@ task :lines do
       codelines += 1
     end
     puts "L: #{sprintf("%4d", lines)}, LOC #{sprintf("%4d", codelines)} | #{file_name}"
-    
+
     total_lines     += lines
     total_codelines += codelines
-    
+
     lines, codelines = 0, 0
   end
 
