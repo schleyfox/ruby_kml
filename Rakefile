@@ -1,3 +1,5 @@
+#!/usr/bin/env rake
+
 require 'rake'
 require 'rake/testtask'
 require 'rdoc/task'
@@ -5,7 +7,6 @@ require 'rubygems/package_task'
 
 require File.join(File.dirname(__FILE__), 'lib/kml', 'version')
 
-# desc "Generate GemSpec file"
 spec = Gem::Specification.load('ruby_kml.gemspec')
 Gem::PackageTask.new(spec) {}
 
@@ -47,3 +48,5 @@ task :lines do
 
   puts "Total: Lines #{total_lines}, LOC #{total_codelines}"
 end
+
+task :default => :test
