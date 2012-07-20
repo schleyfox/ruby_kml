@@ -29,7 +29,7 @@ module KML #:nodoc:
         xm.south(south)
         xm.east(east)
         xm.west(west)
-        xm.rotation unless rotation.nil?
+        xm.rotation(rotation) unless rotation.nil?
       }
     end
   end
