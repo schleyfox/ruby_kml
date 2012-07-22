@@ -19,7 +19,7 @@ class KMLFile
   # Render the KML file
   def render(xm=Builder::XmlMarkup.new(:indent => 2))
     xm.instruct!
-    xm.kml(:xmlns => 'http://earth.google.com/kml/2.1'){
+    xm.kml(:xmlns => 'http://www.opengis.net/kml/2.2'){
       objects.each { |o| o.render(xm) }
     }
   end
