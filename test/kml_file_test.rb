@@ -3,12 +3,13 @@ require './test/test_helper'
 class KMLFileTest < Test::Unit::TestCase
   include KML
 
+  # This also tests the stripping of coordinates
   def test_placemark
     kml = KMLFile.new
     kml.objects << Placemark.new(
       :name => 'Simple placemark',
       :description => 'Attached to the ground. Intelligently places itself at the height of the underlying terrain.',
-      :geometry => Point.new(:coordinates=>'-122.0822035425683,37.42228990140251,0')
+      :geometry => Point.new(:coordinates=>'   -122.0822035425683,37.42228990140251,0  ')
     )
     assert_equal File.read('test/simple_placemark.kml'), kml.render
   end
