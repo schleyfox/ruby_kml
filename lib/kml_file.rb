@@ -15,6 +15,7 @@ class KMLFile
   def objects
     @objects ||= []
   end
+  alias :features :objects
 
   # Render the KML file
   def render(xm=Builder::XmlMarkup.new(:indent => 2))

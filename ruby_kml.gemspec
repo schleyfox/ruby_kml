@@ -9,4 +9,5 @@ Gem::Specification.new do |s|
   s.has_rdoc  = false
   s.authors   = ["aeden, schleyfox, xaviershay, andykram, IanVaughan"]
   s.files     = Dir['**/**']
+  s.add_dependency('builder')
 end
