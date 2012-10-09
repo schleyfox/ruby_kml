@@ -23,7 +23,7 @@ module KML
     def coordinates=(c)
       case c
       when String
-        @coordinates = c.split(',')
+        @coordinates = c.strip.split(',')
         unless @coordinates.length == 2 || @coordinates.length == 3
           raise "Coordinates string may only have 2 parts (indicating lat and long) or 3 parts (lat, long and altitude)"
         end

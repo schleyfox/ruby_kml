@@ -25,7 +25,7 @@ module KML #:nodoc:
     def coordinates=(c)
       case c
       when String
-        @coordinates = c.split(/\s+/).collect { |coord| coord.split(',') }
+        @coordinates = c.strip.split(/\s+/).collect { |coord| coord.split(',') }
       when Array
         c.each do |coord_array|
           unless coord_array.is_a?(Array)
