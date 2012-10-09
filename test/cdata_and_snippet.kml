@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.1">
+  <Document>
+    <name>Document with CDATA example</name>
+    <Snippet>Document level snippet2</Snippet>
+    <Placemark>
+      <name>CDATA example</name>
+      <description>
+        <![CDATA[<h1>CDATA Tags are useful!</h1>
+<p><font color="red">Text is <i>more readable</i> and
+<b>easier to write</b> when you can avoid using entity
+references.</font></p>
+]]>
+      </description>
+      <Snippet>Example of a snippet2</Snippet>
+      <Point>
+        <coordinates>-122.0822035425683,37.4228,0</coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>
