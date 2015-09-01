@@ -23,6 +23,7 @@ end
 require 'kml/feature'
 require 'kml/geometry'
 require 'kml/color_style'
+require 'kml/label_style'
 require 'kml/style_selector'
 require 'kml/link'
 require 'kml/icon'
