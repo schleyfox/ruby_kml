@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
-  s.version   = "0.1.7"
-  s.date      = "2012-05-07"
+  s.version   = "0.1.8"
+  s.date      = "2015-09-01"
   s.name      = "ruby_kml"
   s.summary   = "Generate KML files with ruby"
   s.email     = ""
